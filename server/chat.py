@@ -8,9 +8,9 @@ from prompts import SYSTEM_PROMPT
 
 class ChatWithHistory:
     def __init__(self, model_name="gpt-3.5-turbo", response_type=ChatResponse):
-        self.model = ChatOpenAI(model_name=model_name)
+        raw_model = ChatOpenAI(model_name=model_name)
+        self.model = raw_model.with_structured_output(response_type)
         self.memory = ConversationBufferMemory(return_messages=True)
-        self.output_parser = PydanticOutputParser(pydantic_object=response_type)
 
         prompt = ChatPromptTemplate.from_messages([
             ("system", SYSTEM_PROMPT),
@@ -20,16 +20,15 @@ class ChatWithHistory:
         
         self.chain = (
             RunnablePassthrough.assign(
-                history=lambda x: self.memory.chat_memory.messages,
-                format_instructions=lambda x: self.output_parser.get_format_instructions()
+                history=lambda x: self.memory.chat_memory.messages
             )
             | prompt
             | self.model
-            | self.output_parser
         )
     
     def chat(self, user_input):
         response = self.chain.invoke({"input": user_input})
+        print(f"Response Internal: {response}")
         self.memory.chat_memory.add_user_message(user_input)
         self.memory.chat_memory.add_ai_message(str(response))
         return response

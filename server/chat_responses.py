@@ -20,4 +20,5 @@ class RatingMessage(BaseMessage):
 class YesNoMessage(BaseMessage):
     pass
 
-ChatResponse = Union[TextMessage, MultiSelectMessage, PickerMessage, RatingMessage, YesNoMessage]
+class ChatResponse(BaseModel):
+    message: Union[TextMessage, MultiSelectMessage, PickerMessage, RatingMessage, YesNoMessage]

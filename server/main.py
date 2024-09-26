@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
@@ -7,11 +8,19 @@ from pydantic import BaseModel
 from typing import List, Optional
 import argparse
 import uvicorn
+
 from chat import ChatWithHistory
-from chat_responses import TextMessage
+from chat_responses import (
+    ChatResponse,
+    TextMessage,
+    MultiSelectMessage,
+    PickerMessage,
+    RatingMessage,
+    YesNoMessage,
+)
 
 app = FastAPI()
-chat_bot = ChatWithHistory(response_type=TextMessage)
+chat_bot = ChatWithHistory() # Default response type is ChatResponse
 
 class UserMessage(BaseModel):
     text: str
@@ -23,8 +32,20 @@ class GenericMessage(BaseModel):
 @app.post("/chat", response_model=GenericMessage)
 def chat(user_message: UserMessage):
     try:
-        response = chat_bot.chat(user_message.text)
-        return GenericMessage(message_type="TextMessage", json_content=response.json())
+        response = chat_bot.chat(user_message.text).message
+        print(f"Response: {response}")
+        if isinstance(response, TextMessage):
+            return GenericMessage(message_type="TextMessage", json_content=response.json())
+        elif isinstance(response, MultiSelectMessage):
+            return GenericMessage(message_type="MultiSelectMessage", json_content=response.json())
+        elif isinstance(response, PickerMessage):
+            return GenericMessage(message_type="PickerMessage", json_content=response.json())
+        elif isinstance(response, RatingMessage):
+            return GenericMessage(message_type="RatingMessage", json_content=response.json())
+        elif isinstance(response, YesNoMessage):
+            return GenericMessage(message_type="YesNoMessage", json_content=response.json())
+        else:
+            raise HTTPException(status_code=500, detail="Unknown response type")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
