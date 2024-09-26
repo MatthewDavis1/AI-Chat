@@ -8,7 +8,7 @@ struct BotRatingMessageView: View {
 
     init(message: RatingMessage) {
         self.message = message
-        _selectedValue = State(initialValue: message.range.lowerBound)
+        _selectedValue = State(initialValue: Double(message.rangeLow))
     }
 
     var body: some View {
@@ -26,8 +26,11 @@ struct BotRatingMessageView: View {
                     .shadow(color: ThemeColors.blackBlack.opacity(0.1), radius: 5, x: 0, y: 2)
 
                 if !isAnswered {
-                    CustomSlider(value: $selectedValue, range: message.range, step: message.step, trackHeight: 30) // Set the track height to 30 for a taller appearance
-                    Text("Selected value: \(message.isInteger ? String(Int(selectedValue)) : String(format: "%.2f", selectedValue))")
+                    CustomSlider(value: $selectedValue, 
+                                 range: Double(message.rangeLow)...Double(message.rangeHigh), 
+                                 step: 1, 
+                                 trackHeight: 30)
+                    Text("Selected value: \(Int(selectedValue))")
                         .foregroundColor(ThemeColors.accentLightPinkishRed)
 
                     HStack {
@@ -54,7 +57,7 @@ struct BotRatingMessageView: View {
                         )
                     }
                 } else {
-                    Text("Answer: \(message.isInteger ? String(Int(selectedValue)) : String(format: "%.2f", selectedValue))")
+                    Text("Answer: \(Int(selectedValue))")
                         .foregroundColor(ThemeColors.accentLightPinkishRed)
                 }
             }

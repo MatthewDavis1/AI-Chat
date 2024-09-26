@@ -12,7 +12,7 @@ class ChatAPI {
     
     let baseURL = "http://127.0.0.1:8000" // Update if different
     
-    func sendMessage(message: TextMessage, completion: @escaping (Result<any Message, Error>) -> Void) {
+    func sendMessage(message: BaseMessage, completion: @escaping (Result<any BaseMessage, Error>) -> Void) {
         guard let url = URL(string: "\(baseURL)/chat") else {
             completion(.failure(ChatError.invalidURL))
             return
@@ -41,23 +41,47 @@ class ChatAPI {
                 return
             }
             
+            // Decode to GenericMessage first
             do {
-                // Decode to any of the possible message types
-                if let textMessage = try? JSONDecoder().decode(TextMessage.self, from: data) {
-                    completion(.success(textMessage))
-                } else if let multiSelectMessage = try? JSONDecoder().decode(MultiSelectMessage.self, from: data) {
-                    completion(.success(multiSelectMessage))
-                } else if let pickerMessage = try? JSONDecoder().decode(PickerMessage.self, from: data) {
-                    completion(.success(pickerMessage))
-                } else if let ratingMessage = try? JSONDecoder().decode(RatingMessage.self, from: data) {
-                    completion(.success(ratingMessage))
-                } else if let yesNoMessage = try? JSONDecoder().decode(YesNoMessage.self, from: data) {
-                    completion(.success(yesNoMessage))
-                } else {
+                let genericMessage = try JSONDecoder().decode(GenericMessage.self, from: data)
+                let jsonData = Data(genericMessage.json_content.utf8)
+                
+                switch genericMessage.message_type {
+                case "TextMessage":
+                    if let message = try? JSONDecoder().decode(TextMessage.self, from: jsonData) {
+                        completion(.success(message))
+                    } else {
+                        completion(.failure(ChatError.decodingError))
+                    }
+                case "MultiSelectMessage":
+                    if let message = try? JSONDecoder().decode(MultiSelectMessage.self, from: jsonData) {
+                        completion(.success(message))
+                    } else {
+                        completion(.failure(ChatError.decodingError))
+                    }
+                case "PickerMessage":
+                    if let message = try? JSONDecoder().decode(PickerMessage.self, from: jsonData) {
+                        completion(.success(message))
+                    } else {
+                        completion(.failure(ChatError.decodingError))
+                    }
+                case "RatingMessage":
+                    if let message = try? JSONDecoder().decode(RatingMessage.self, from: jsonData) {
+                        completion(.success(message))
+                    } else {
+                        completion(.failure(ChatError.decodingError))
+                    }
+                case "YesNoMessage":
+                    if let message = try? JSONDecoder().decode(YesNoMessage.self, from: jsonData) {
+                        completion(.success(message))
+                    } else {
+                        completion(.failure(ChatError.decodingError))
+                    }
+                default:
                     completion(.failure(ChatError.decodingError))
                 }
             } catch {
-                completion(.failure(error))
+                completion(.failure(ChatError.decodingError))
             }
         }
         

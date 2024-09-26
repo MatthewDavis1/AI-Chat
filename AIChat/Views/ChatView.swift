@@ -2,9 +2,9 @@ import SwiftUI
 
 struct ChatView: View {
     @State private var inputText: String = ""
-    @State private var messages: [any Message] = [
-        TextMessage(id: 0, text: "Hello! How can I assist you today?", isUser: false),
-        TextMessage(id: 1, text: "I need some help with my project.", isUser: true)
+    @State private var messages: [ChatMessage] = [
+        ChatMessage(message: TextMessage(text: "Hello! How can I assist you today?"), id: 0, isUser: false),
+        ChatMessage(message: TextMessage(text: "I need some help with my project."), id: 1, isUser: true)
     ]
     @State private var isAtBottom: Bool = true
     @State private var showNewMessageAlert: Bool = false
@@ -23,10 +23,10 @@ struct ChatView: View {
                                     HStack {
                                         if message.isUser {
                                             Spacer()
-                                            UserTextMessageView(message: message as! TextMessage)
+                                            UserTextMessageView(message: message.message as! TextMessage)
                                         } else {
                                             Group {
-                                                switch message {
+                                                switch message.message {
                                                 case let pickerMessage as PickerMessage:
                                                     BotPickerMessageView(message: pickerMessage)
                                                 case let multiSelectMessage as MultiSelectMessage:
@@ -36,7 +36,7 @@ struct ChatView: View {
                                                 case let ratingMessage as RatingMessage:
                                                     BotRatingMessageView(message: ratingMessage)
                                                 default:
-                                                    BotTextMessageView(message: message as! TextMessage)
+                                                    BotTextMessageView(message: message.message as! TextMessage)
                                                 }
                                             }
                                             Spacer()
@@ -135,8 +135,8 @@ struct ChatView: View {
     func sendMessage() {
         guard !inputText.isEmpty else { return }
         let userMessageCount = messages.filter { $0.isUser }.count
-        let newMessage = TextMessage(id: messages.count, text: inputText, isUser: true)
-        messages.append(newMessage)
+        let newMessage = TextMessage(text: inputText)
+        messages.append(ChatMessage(message: newMessage, id: messages.count, isUser: true))
         inputText = ""
         
         isLoading = true
@@ -146,11 +146,11 @@ struct ChatView: View {
                 isLoading = false
                 switch result {
                 case .success(let responseMessage):
-                    messages.append(responseMessage)
+                    messages.append(ChatMessage(message: responseMessage, id: messages.count, isUser: false))
                 case .failure(let error):
                     // Handle error (e.g., show an alert)
-                    let errorMessage = TextMessage(id: messages.count, text: "Error: \(error.localizedDescription)", isUser: false)
-                    messages.append(errorMessage)
+                    let errorMessage = TextMessage(text: "Error: \(error.localizedDescription)")
+                    messages.append(ChatMessage(message: errorMessage, id: messages.count, isUser: false))
                 }
             }
         }

@@ -13,22 +13,17 @@
 		EED0DD412CA4CF0900C06390 /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD3D2CA4CF0900C06390 /* ThemeColors.swift */; };
 		EED0DD782CA4CF9100C06390 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD6C2CA4CF9100C06390 /* CustomSlider.swift */; };
 		EED0DD792CA4CF9100C06390 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD6E2CA4CF9100C06390 /* Color+Hex.swift */; };
-		EED0DD7A2CA4CF9100C06390 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD702CA4CF9100C06390 /* Message.swift */; };
-		EED0DD7B2CA4CF9100C06390 /* MultiSelectMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD712CA4CF9100C06390 /* MultiSelectMessage.swift */; };
-		EED0DD7C2CA4CF9100C06390 /* PickerMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD722CA4CF9100C06390 /* PickerMessage.swift */; };
-		EED0DD7D2CA4CF9100C06390 /* RatingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD732CA4CF9100C06390 /* RatingMessage.swift */; };
-		EED0DD7E2CA4CF9100C06390 /* TextEntryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD742CA4CF9100C06390 /* TextEntryMessage.swift */; };
-		EED0DD7F2CA4CF9100C06390 /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD752CA4CF9100C06390 /* TextMessage.swift */; };
-		EED0DD802CA4CF9100C06390 /* YesNoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD762CA4CF9100C06390 /* YesNoMessage.swift */; };
 		EED0DD892CA4CFB900C06390 /* UserTextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD812CA4CFB900C06390 /* UserTextMessageView.swift */; };
 		EED0DD8A2CA4CFB900C06390 /* BotRatingMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD822CA4CFB900C06390 /* BotRatingMessageView.swift */; };
 		EED0DD8B2CA4CFB900C06390 /* BotYesNoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD832CA4CFB900C06390 /* BotYesNoMessageView.swift */; };
 		EED0DD8C2CA4CFB900C06390 /* BotMultiSelectMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD842CA4CFB900C06390 /* BotMultiSelectMessageView.swift */; };
-		EED0DD8D2CA4CFB900C06390 /* BotTextEntryMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD852CA4CFB900C06390 /* BotTextEntryMessageView.swift */; };
 		EED0DD8E2CA4CFB900C06390 /* BotTextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD862CA4CFB900C06390 /* BotTextMessageView.swift */; };
 		EED0DD8F2CA4CFB900C06390 /* BotPickerMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD872CA4CFB900C06390 /* BotPickerMessageView.swift */; };
 		EED0DD902CA4CFB900C06390 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD882CA4CFB900C06390 /* ChatView.swift */; };
 		EED0DD922CA5DB2E00C06390 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */; };
+		EED0DD962CA60EB300C06390 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD952CA60EB200C06390 /* ChatMessage.swift */; };
+		EED0DD982CA60EBC00C06390 /* GenericMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD972CA60EBC00C06390 /* GenericMessage.swift */; };
+		EED0DD9A2CA615A500C06390 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD992CA615A500C06390 /* Messages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,22 +34,17 @@
 		EED0DD3D2CA4CF0900C06390 /* ThemeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
 		EED0DD6C2CA4CF9100C06390 /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		EED0DD6E2CA4CF9100C06390 /* Color+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
-		EED0DD702CA4CF9100C06390 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		EED0DD712CA4CF9100C06390 /* MultiSelectMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSelectMessage.swift; sourceTree = "<group>"; };
-		EED0DD722CA4CF9100C06390 /* PickerMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerMessage.swift; sourceTree = "<group>"; };
-		EED0DD732CA4CF9100C06390 /* RatingMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingMessage.swift; sourceTree = "<group>"; };
-		EED0DD742CA4CF9100C06390 /* TextEntryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEntryMessage.swift; sourceTree = "<group>"; };
-		EED0DD752CA4CF9100C06390 /* TextMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
-		EED0DD762CA4CF9100C06390 /* YesNoMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoMessage.swift; sourceTree = "<group>"; };
 		EED0DD812CA4CFB900C06390 /* UserTextMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTextMessageView.swift; sourceTree = "<group>"; };
 		EED0DD822CA4CFB900C06390 /* BotRatingMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotRatingMessageView.swift; sourceTree = "<group>"; };
 		EED0DD832CA4CFB900C06390 /* BotYesNoMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotYesNoMessageView.swift; sourceTree = "<group>"; };
 		EED0DD842CA4CFB900C06390 /* BotMultiSelectMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotMultiSelectMessageView.swift; sourceTree = "<group>"; };
-		EED0DD852CA4CFB900C06390 /* BotTextEntryMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotTextEntryMessageView.swift; sourceTree = "<group>"; };
 		EED0DD862CA4CFB900C06390 /* BotTextMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotTextMessageView.swift; sourceTree = "<group>"; };
 		EED0DD872CA4CFB900C06390 /* BotPickerMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotPickerMessageView.swift; sourceTree = "<group>"; };
 		EED0DD882CA4CFB900C06390 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
+		EED0DD952CA60EB200C06390 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		EED0DD972CA60EBC00C06390 /* GenericMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMessage.swift; sourceTree = "<group>"; };
+		EED0DD992CA615A500C06390 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +103,6 @@
 				EED0DD842CA4CFB900C06390 /* BotMultiSelectMessageView.swift */,
 				EED0DD872CA4CFB900C06390 /* BotPickerMessageView.swift */,
 				EED0DD822CA4CFB900C06390 /* BotRatingMessageView.swift */,
-				EED0DD852CA4CFB900C06390 /* BotTextEntryMessageView.swift */,
 				EED0DD862CA4CFB900C06390 /* BotTextMessageView.swift */,
 				EED0DD832CA4CFB900C06390 /* BotYesNoMessageView.swift */,
 				EED0DD882CA4CFB900C06390 /* ChatView.swift */,
@@ -149,14 +138,10 @@
 		EED0DD772CA4CF9100C06390 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EED0DD702CA4CF9100C06390 /* Message.swift */,
-				EED0DD712CA4CF9100C06390 /* MultiSelectMessage.swift */,
 				EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */,
-				EED0DD722CA4CF9100C06390 /* PickerMessage.swift */,
-				EED0DD732CA4CF9100C06390 /* RatingMessage.swift */,
-				EED0DD742CA4CF9100C06390 /* TextEntryMessage.swift */,
-				EED0DD752CA4CF9100C06390 /* TextMessage.swift */,
-				EED0DD762CA4CF9100C06390 /* YesNoMessage.swift */,
+				EED0DD972CA60EBC00C06390 /* GenericMessage.swift */,
+				EED0DD952CA60EB200C06390 /* ChatMessage.swift */,
+				EED0DD992CA615A500C06390 /* Messages.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,25 +217,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				EED0DD892CA4CFB900C06390 /* UserTextMessageView.swift in Sources */,
-				EED0DD7C2CA4CF9100C06390 /* PickerMessage.swift in Sources */,
 				EED0DD922CA5DB2E00C06390 /* ChatAPI.swift in Sources */,
-				EED0DD7F2CA4CF9100C06390 /* TextMessage.swift in Sources */,
+				EED0DD962CA60EB300C06390 /* ChatMessage.swift in Sources */,
+				EED0DD982CA60EBC00C06390 /* GenericMessage.swift in Sources */,
 				EED0DD902CA4CFB900C06390 /* ChatView.swift in Sources */,
 				EED0DD782CA4CF9100C06390 /* CustomSlider.swift in Sources */,
 				EED0DD8C2CA4CFB900C06390 /* BotMultiSelectMessageView.swift in Sources */,
-				EED0DD8D2CA4CFB900C06390 /* BotTextEntryMessageView.swift in Sources */,
+				EED0DD9A2CA615A500C06390 /* Messages.swift in Sources */,
 				EED0DD412CA4CF0900C06390 /* ThemeColors.swift in Sources */,
-				EED0DD7B2CA4CF9100C06390 /* MultiSelectMessage.swift in Sources */,
 				EED0DD8B2CA4CFB900C06390 /* BotYesNoMessageView.swift in Sources */,
-				EED0DD7E2CA4CF9100C06390 /* TextEntryMessage.swift in Sources */,
-				EED0DD802CA4CF9100C06390 /* YesNoMessage.swift in Sources */,
 				EED0DD8F2CA4CFB900C06390 /* BotPickerMessageView.swift in Sources */,
 				EED0DD8E2CA4CFB900C06390 /* BotTextMessageView.swift in Sources */,
 				EED0DD292CA4CBDA00C06390 /* AIChatApp.swift in Sources */,
 				EED0DD8A2CA4CFB900C06390 /* BotRatingMessageView.swift in Sources */,
 				EED0DD792CA4CF9100C06390 /* Color+Hex.swift in Sources */,
-				EED0DD7D2CA4CF9100C06390 /* RatingMessage.swift in Sources */,
-				EED0DD7A2CA4CF9100C06390 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

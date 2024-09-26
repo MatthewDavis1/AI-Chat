@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 import argparse
 import uvicorn
 from chat import ChatWithHistory
-from chat_responses import TextResponse
+from chat_responses import TextMessage
 
 app = FastAPI()
-chat_bot = ChatWithHistory(response_type=TextResponse)
+chat_bot = ChatWithHistory(response_type=TextMessage)
 
 class UserMessage(BaseModel):
-    id: int
     text: str
-    isUser: bool = True
 
 class GenericMessage(BaseModel):
     message_type: str
@@ -21,8 +22,29 @@ class GenericMessage(BaseModel):
 
 @app.post("/chat", response_model=GenericMessage)
 def chat(user_message: UserMessage):
-    response = chat_bot.chat(user_message.text)
-    return GenericMessage(message_type="text", json_content=response.json())
+    try:
+        response = chat_bot.chat(user_message.text)
+        return GenericMessage(message_type="TextMessage", json_content=response.json())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.exception_handler(StarletteHTTPException)
+async def custom_http_exception_handler(request: Request, exc: StarletteHTTPException):
+    print(f"HTTP error occurred: {repr(exc)}")
+    print(f"Request: {request.method} {request.url}")
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail},
+    )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    print(f"Validation error occurred: {exc}")
+    print(f"Request: {request.method} {request.url}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors(), "body": exc.body},
+    )
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run the FastAPI server.")
