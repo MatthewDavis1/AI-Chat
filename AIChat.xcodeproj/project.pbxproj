@@ -28,6 +28,7 @@
 		EED0DD8E2CA4CFB900C06390 /* BotTextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD862CA4CFB900C06390 /* BotTextMessageView.swift */; };
 		EED0DD8F2CA4CFB900C06390 /* BotPickerMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD872CA4CFB900C06390 /* BotPickerMessageView.swift */; };
 		EED0DD902CA4CFB900C06390 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD882CA4CFB900C06390 /* ChatView.swift */; };
+		EED0DD922CA5DB2E00C06390 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		EED0DD862CA4CFB900C06390 /* BotTextMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotTextMessageView.swift; sourceTree = "<group>"; };
 		EED0DD872CA4CFB900C06390 /* BotPickerMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotPickerMessageView.swift; sourceTree = "<group>"; };
 		EED0DD882CA4CFB900C06390 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				EED0DD702CA4CF9100C06390 /* Message.swift */,
 				EED0DD712CA4CF9100C06390 /* MultiSelectMessage.swift */,
+				EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */,
 				EED0DD722CA4CF9100C06390 /* PickerMessage.swift */,
 				EED0DD732CA4CF9100C06390 /* RatingMessage.swift */,
 				EED0DD742CA4CF9100C06390 /* TextEntryMessage.swift */,
@@ -230,6 +233,7 @@
 			files = (
 				EED0DD892CA4CFB900C06390 /* UserTextMessageView.swift in Sources */,
 				EED0DD7C2CA4CF9100C06390 /* PickerMessage.swift in Sources */,
+				EED0DD922CA5DB2E00C06390 /* ChatAPI.swift in Sources */,
 				EED0DD7F2CA4CF9100C06390 /* TextMessage.swift in Sources */,
 				EED0DD902CA4CFB900C06390 /* ChatView.swift in Sources */,
 				EED0DD782CA4CF9100C06390 /* CustomSlider.swift in Sources */,

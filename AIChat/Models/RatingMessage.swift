@@ -7,7 +7,7 @@ struct RatingMessage: Message {
     var scaleType: ScaleType // New property to differentiate between types
     var isInteger: Bool // New property to indicate if the rating should be an integer
 
-    enum ScaleType {
+    enum ScaleType: String, Codable {
         case oneToTen
         case zeroToHundred
     }

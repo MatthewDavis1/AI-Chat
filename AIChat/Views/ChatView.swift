@@ -8,6 +8,7 @@ struct ChatView: View {
     ]
     @State private var isAtBottom: Bool = true
     @State private var showNewMessageAlert: Bool = false
+    @State private var isLoading: Bool = false
     
     var body: some View {
         VStack { // Wrap ZStack in a VStack
@@ -53,7 +54,7 @@ struct ChatView: View {
                                 return Color.clear
                             })
                         }
-                        .onChange(of: messages.count) { _ in
+                        .onChange(of: messages.count) { newCount, oldCount in
                             if isAtBottom {
                                 withAnimation {
                                     scrollViewProxy.scrollTo(messages.last?.id, anchor: .bottom)
@@ -79,6 +80,13 @@ struct ChatView: View {
                             }
                             .padding(.bottom, 10)
                         }
+                        
+                        if isLoading {
+                            ProgressView()
+                                .padding()
+                                .background(ThemeColors.cardBackgroundSlightlyLighterNavyBlue)
+                                .cornerRadius(8)
+                        }
                     }
                     
                     Divider().background(ThemeColors.accentDeepBlue)
@@ -102,10 +110,10 @@ struct ChatView: View {
                                 .foregroundColor(ThemeColors.textWhite)
                                 .frame(height: 40)
                                 .padding(.horizontal, 16)
-                                .background(ThemeColors.accentDeepBlue)
+                                .background(inputText.isEmpty ? ThemeColors.disabledTextDarkGray : ThemeColors.accentDeepBlue)
                                 .cornerRadius(20)
                         }
-                        .disabled(inputText.isEmpty)
+                        .disabled(inputText.isEmpty || isLoading)
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 10)
@@ -130,28 +138,22 @@ struct ChatView: View {
         let newMessage = TextMessage(id: messages.count, text: inputText, isUser: true)
         messages.append(newMessage)
         inputText = ""
-
-        let botMessage: any Message
         
-        switch userMessageCount % 6 { // Updated to 6 to include PickerMessage
-        case 0:
-            botMessage = RatingMessage(id: messages.count, text: "How would you rate your day? (1-10)", isUser: false, range: 1...10, step: 1, scaleType: .oneToTen, isInteger: true)
-        case 1:
-            botMessage = MultiSelectMessage(id: messages.count, text: "Select your hobbies:", isUser: false, options: ["Reading", "Sports", "Music", "Cooking"])
-        case 2:
-            botMessage = RatingMessage(id: messages.count, text: "Rate your experience (0.0-5.0)", isUser: false, range: 0.0...5.0, step: 0.1, scaleType: .zeroToHundred, isInteger: false)
-        case 3:
-            botMessage = RatingMessage(id: messages.count, text: "How satisfied are you with our service? (0-100)", isUser: false, range: 0...100, step: 1, scaleType: .zeroToHundred, isInteger: true)
-        case 4:
-            botMessage = YesNoMessage(id: messages.count, text: "Do you enjoy programming?", isUser: false)
-        case 5: // New case for PickerMessage
-            let options = ["Option 1", "Option 2", "Option 3"]
-            botMessage = PickerMessage(id: messages.count, text: "Choose an option:", isUser: false, options: options)
-        default:
-            botMessage = TextMessage(id: messages.count, text: "I didn't understand that.", isUser: false)
+        isLoading = true
+        
+        ChatAPI.shared.sendMessage(message: newMessage) { result in
+            DispatchQueue.main.async {
+                isLoading = false
+                switch result {
+                case .success(let responseMessage):
+                    messages.append(responseMessage)
+                case .failure(let error):
+                    // Handle error (e.g., show an alert)
+                    let errorMessage = TextMessage(id: messages.count, text: "Error: \(error.localizedDescription)", isUser: false)
+                    messages.append(errorMessage)
+                }
+            }
         }
-        
-        messages.append(botMessage)
     }
 }
 
