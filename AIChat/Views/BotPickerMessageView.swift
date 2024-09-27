@@ -72,11 +72,11 @@ struct BotPickerMessageView: View {
     private func sendResponse() {
         guard let selectedOption = selectedOption else { return }
         let responseText = "User selected option for: \(message.text)\nSelected option: \(selectedOption)"
-        viewModel.sendCustomMessage(TextMessage(text: responseText))
+        viewModel.sendResponseMessage(TextMessage(text: responseText))
     }
     
     private func sendSkipResponse() {
         let skipText = "User skipped the picker question: \(message.text)"
-        viewModel.sendCustomMessage(TextMessage(text: skipText))
+        viewModel.sendResponseMessage(TextMessage(text: skipText))
     }
 }

@@ -77,12 +77,12 @@ struct BotMultiSelectMessageView: View {
     
     private func sendResponse() {
         let responseText = "User selected options for: \(message.text)\nSelected options: \(selectedOptions.joined(separator: ", "))"
-        viewModel.sendCustomMessage(TextMessage(text: responseText))
+        viewModel.sendResponseMessage(TextMessage(text: responseText))
     }
     
     private func sendSkipResponse() {
         let skipText = "User skipped the multi-select question: \(message.text)"
-        viewModel.sendCustomMessage(TextMessage(text: skipText))
+        viewModel.sendResponseMessage(TextMessage(text: skipText))
     }
 }
 

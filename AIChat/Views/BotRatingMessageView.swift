@@ -69,11 +69,11 @@ struct BotRatingMessageView: View {
 
     private func sendResponse() {
         let responseText = "User rated for: \(message.text)\nRating: \(Int(selectedValue))"
-        viewModel.sendCustomMessage(TextMessage(text: responseText))
+        viewModel.sendResponseMessage(TextMessage(text: responseText))
     }
 
     private func sendSkipResponse() {
         let skipText = "User skipped the rating question: \(message.text)"
-        viewModel.sendCustomMessage(TextMessage(text: skipText))
+        viewModel.sendResponseMessage(TextMessage(text: skipText))
     }
 }

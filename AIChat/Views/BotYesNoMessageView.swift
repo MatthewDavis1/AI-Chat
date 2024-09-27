@@ -87,12 +87,12 @@ struct BotYesNoMessageView: View {
     private func sendResponse() {
         guard let response = response else { return }
         let responseText = "User responded \(response ? "Yes" : "No") to: \(message.text)"
-        viewModel.sendCustomMessage(TextMessage(text: responseText))
+        viewModel.sendResponseMessage(TextMessage(text: responseText))
     }
     
     private func sendSkipResponse() {
         let skipText = "User skipped the question: \(message.text)"
-        viewModel.sendCustomMessage(TextMessage(text: skipText))
+        viewModel.sendResponseMessage(TextMessage(text: skipText))
     }
 }
 

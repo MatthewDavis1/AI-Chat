@@ -61,7 +61,7 @@ class ChatViewModel: ObservableObject {
         }
     }
 
-    func sendCustomMessage(_ message: TextMessage) {
+    func sendResponseMessage(_ message: TextMessage) {
         isLoading = true
 
         ChatAPI.shared.sendMessage(message: message) { [weak self] result in
