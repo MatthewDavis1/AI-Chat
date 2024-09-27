@@ -5,6 +5,7 @@ struct BotMultiSelectMessageView: View {
     @State private var selectedOptions: Set<String> = []
     @State private var isAnswered = false
     @State private var isSkipped = false
+    @EnvironmentObject var viewModel: ChatViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -25,10 +26,10 @@ struct BotMultiSelectMessageView: View {
                         HStack {
                             Text(option)
                                 .foregroundColor(ThemeColors.textWhite)
-                            Spacer() // Pushes the checkbox to the right
+                            Spacer()
                             Image(systemName: selectedOptions.contains(option) ? "checkmark.square.fill" : "square")
                                 .foregroundColor(ThemeColors.accentLightPinkishRed)
-                                .font(.system(size: 24)) // Increase size for easier clicking
+                                .font(.system(size: 24))
                                 .onTapGesture {
                                     if selectedOptions.contains(option) {
                                         selectedOptions.remove(option)
@@ -37,12 +38,13 @@ struct BotMultiSelectMessageView: View {
                                     }
                                 }
                         }
-                        .padding(.vertical, 4) // Reduced vertical padding for better spacing
+                        .padding(.vertical, 4)
                     }
                     
                     HStack {
                         Button("Confirm") {
                             isAnswered = true
+                            sendResponse()
                         }
                         .disabled(selectedOptions.isEmpty)
                         .padding(.vertical, 8)
@@ -53,6 +55,7 @@ struct BotMultiSelectMessageView: View {
                         
                         Button("Skip") {
                             isSkipped = true
+                            sendSkipResponse()
                         }
                         .padding(.vertical, 8)
                         .padding(.horizontal, 16)
@@ -70,6 +73,16 @@ struct BotMultiSelectMessageView: View {
                 }
             }
         }
+    }
+    
+    private func sendResponse() {
+        let responseText = "User selected options for: \(message.text)\nSelected options: \(selectedOptions.joined(separator: ", "))"
+        viewModel.sendCustomMessage(TextMessage(text: responseText))
+    }
+    
+    private func sendSkipResponse() {
+        let skipText = "User skipped the multi-select question: \(message.text)"
+        viewModel.sendCustomMessage(TextMessage(text: skipText))
     }
 }
 

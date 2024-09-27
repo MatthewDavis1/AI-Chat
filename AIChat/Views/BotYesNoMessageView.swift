@@ -5,6 +5,7 @@ struct BotYesNoMessageView: View {
     @State private var response: Bool?
     @State private var isAnswered = false
     @State private var isSkipped = false
+    @EnvironmentObject var viewModel: ChatViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -52,6 +53,7 @@ struct BotYesNoMessageView: View {
                     HStack {
                         Button("Confirm") {
                             isAnswered = true
+                            sendResponse()
                         }
                         .disabled(response == nil)
                         .padding(.vertical, 8)
@@ -62,6 +64,7 @@ struct BotYesNoMessageView: View {
                         
                         Button("Skip") {
                             isSkipped = true
+                            sendSkipResponse()
                         }
                         .padding(.vertical, 8)
                         .padding(.horizontal, 16)
@@ -79,6 +82,17 @@ struct BotYesNoMessageView: View {
                 }
             }
         }
+    }
+    
+    private func sendResponse() {
+        guard let response = response else { return }
+        let responseText = "User responded \(response ? "Yes" : "No") to: \(message.text)"
+        viewModel.sendCustomMessage(TextMessage(text: responseText))
+    }
+    
+    private func sendSkipResponse() {
+        let skipText = "User skipped the question: \(message.text)"
+        viewModel.sendCustomMessage(TextMessage(text: skipText))
     }
 }
 

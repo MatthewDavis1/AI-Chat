@@ -24,6 +24,7 @@
 		EED0DD962CA60EB300C06390 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD952CA60EB200C06390 /* ChatMessage.swift */; };
 		EED0DD982CA60EBC00C06390 /* GenericMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD972CA60EBC00C06390 /* GenericMessage.swift */; };
 		EED0DD9A2CA615A500C06390 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD992CA615A500C06390 /* Messages.swift */; };
+		EED0DD9D2CA62E0800C06390 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD9B2CA62E0800C06390 /* ChatViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		EED0DD952CA60EB200C06390 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		EED0DD972CA60EBC00C06390 /* GenericMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMessage.swift; sourceTree = "<group>"; };
 		EED0DD992CA615A500C06390 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		EED0DD9B2CA62E0800C06390 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		EED0DD272CA4CBDA00C06390 /* AIChat */ = {
 			isa = PBXGroup;
 			children = (
+				EED0DD9C2CA62E0800C06390 /* ViewModels */,
 				EED0DD6D2CA4CF9100C06390 /* Components */,
 				EED0DD6F2CA4CF9100C06390 /* Extensions */,
 				EED0DD772CA4CF9100C06390 /* Models */,
@@ -144,6 +147,14 @@
 				EED0DD992CA615A500C06390 /* Messages.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EED0DD9C2CA62E0800C06390 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EED0DD9B2CA62E0800C06390 /* ChatViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +237,7 @@
 				EED0DD9A2CA615A500C06390 /* Messages.swift in Sources */,
 				EED0DD412CA4CF0900C06390 /* ThemeColors.swift in Sources */,
 				EED0DD8B2CA4CFB900C06390 /* BotYesNoMessageView.swift in Sources */,
+				EED0DD9D2CA62E0800C06390 /* ChatViewModel.swift in Sources */,
 				EED0DD8F2CA4CFB900C06390 /* BotPickerMessageView.swift in Sources */,
 				EED0DD8E2CA4CFB900C06390 /* BotTextMessageView.swift in Sources */,
 				EED0DD292CA4CBDA00C06390 /* AIChatApp.swift in Sources */,

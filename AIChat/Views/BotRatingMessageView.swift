@@ -5,6 +5,7 @@ struct BotRatingMessageView: View {
     @State private var selectedValue: Double
     @State private var isAnswered = false
     @State private var isSkipped = false
+    @EnvironmentObject var viewModel: ChatViewModel
 
     init(message: RatingMessage) {
         self.message = message
@@ -36,6 +37,7 @@ struct BotRatingMessageView: View {
                     HStack {
                         Button("Confirm") {
                             isAnswered = true
+                            sendResponse()
                         }
                         .padding(.vertical, 8)
                         .padding(.horizontal, 16)
@@ -45,6 +47,7 @@ struct BotRatingMessageView: View {
 
                         Button("Skip") {
                             isSkipped = true
+                            sendSkipResponse()
                         }
                         .padding(.vertical, 8)
                         .padding(.horizontal, 16)
@@ -62,5 +65,15 @@ struct BotRatingMessageView: View {
                 }
             }
         }
+    }
+
+    private func sendResponse() {
+        let responseText = "User rated for: \(message.text)\nRating: \(Int(selectedValue))"
+        viewModel.sendCustomMessage(TextMessage(text: responseText))
+    }
+
+    private func sendSkipResponse() {
+        let skipText = "User skipped the rating question: \(message.text)"
+        viewModel.sendCustomMessage(TextMessage(text: skipText))
     }
 }

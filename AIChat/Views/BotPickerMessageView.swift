@@ -5,6 +5,7 @@ struct BotPickerMessageView: View {
     @State private var selectedOption: String?
     @State private var isAnswered = false
     @State private var isSkipped = false
+    @EnvironmentObject var viewModel: ChatViewModel
     
     init(message: PickerMessage) {
         self.message = message
@@ -37,6 +38,7 @@ struct BotPickerMessageView: View {
                     HStack {
                         Button("Confirm") {
                             isAnswered = true
+                            sendResponse()
                         }
                         .disabled(selectedOption == nil)
                         .padding(.vertical, 8)
@@ -47,6 +49,7 @@ struct BotPickerMessageView: View {
                         
                         Button("Skip") {
                             isSkipped = true
+                            sendSkipResponse()
                         }
                         .padding(.vertical, 8)
                         .padding(.horizontal, 16)
@@ -64,5 +67,16 @@ struct BotPickerMessageView: View {
                 }
             }
         }
+    }
+    
+    private func sendResponse() {
+        guard let selectedOption = selectedOption else { return }
+        let responseText = "User selected option for: \(message.text)\nSelected option: \(selectedOption)"
+        viewModel.sendCustomMessage(TextMessage(text: responseText))
+    }
+    
+    private func sendSkipResponse() {
+        let skipText = "User skipped the picker question: \(message.text)"
+        viewModel.sendCustomMessage(TextMessage(text: skipText))
     }
 }
