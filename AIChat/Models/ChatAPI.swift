@@ -43,7 +43,7 @@ class ChatAPI {
             
             // Decode to GenericMessage first
             do {
-                let genericMessage = try JSONDecoder().decode(GenericMessage.self, from: data)
+                let genericMessage = try JSONDecoder().decode(GenericResponse.self, from: data)
                 let jsonData = Data(genericMessage.json_content.utf8)
                 
                 switch genericMessage.message_type {

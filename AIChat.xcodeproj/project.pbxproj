@@ -22,7 +22,7 @@
 		EED0DD902CA4CFB900C06390 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD882CA4CFB900C06390 /* ChatView.swift */; };
 		EED0DD922CA5DB2E00C06390 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */; };
 		EED0DD962CA60EB300C06390 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD952CA60EB200C06390 /* ChatMessage.swift */; };
-		EED0DD982CA60EBC00C06390 /* GenericMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD972CA60EBC00C06390 /* GenericMessage.swift */; };
+		EED0DD982CA60EBC00C06390 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD972CA60EBC00C06390 /* GenericResponse.swift */; };
 		EED0DD9A2CA615A500C06390 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD992CA615A500C06390 /* Messages.swift */; };
 		EED0DD9D2CA62E0800C06390 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED0DD9B2CA62E0800C06390 /* ChatViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +44,7 @@
 		EED0DD882CA4CFB900C06390 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		EED0DD952CA60EB200C06390 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
-		EED0DD972CA60EBC00C06390 /* GenericMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMessage.swift; sourceTree = "<group>"; };
+		EED0DD972CA60EBC00C06390 /* GenericResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		EED0DD992CA615A500C06390 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		EED0DD9B2CA62E0800C06390 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				EED0DD912CA5DB2E00C06390 /* ChatAPI.swift */,
-				EED0DD972CA60EBC00C06390 /* GenericMessage.swift */,
+				EED0DD972CA60EBC00C06390 /* GenericResponse.swift */,
 				EED0DD952CA60EB200C06390 /* ChatMessage.swift */,
 				EED0DD992CA615A500C06390 /* Messages.swift */,
 			);
@@ -230,7 +230,7 @@
 				EED0DD892CA4CFB900C06390 /* UserTextMessageView.swift in Sources */,
 				EED0DD922CA5DB2E00C06390 /* ChatAPI.swift in Sources */,
 				EED0DD962CA60EB300C06390 /* ChatMessage.swift in Sources */,
-				EED0DD982CA60EBC00C06390 /* GenericMessage.swift in Sources */,
+				EED0DD982CA60EBC00C06390 /* GenericResponse.swift in Sources */,
 				EED0DD902CA4CFB900C06390 /* ChatView.swift in Sources */,
 				EED0DD782CA4CF9100C06390 /* CustomSlider.swift in Sources */,
 				EED0DD8C2CA4CFB900C06390 /* BotMultiSelectMessageView.swift in Sources */,
