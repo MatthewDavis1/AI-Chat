@@ -33,7 +33,6 @@ class GenericMessage(BaseModel):
 def chat(user_message: UserMessage):
     try:
         response = chat_bot.chat(user_message.text).message
-        print(f"Response: {response}")
         if isinstance(response, TextMessage):
             return GenericMessage(message_type="TextMessage", json_content=response.json())
         elif isinstance(response, MultiSelectMessage):

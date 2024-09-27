@@ -28,7 +28,6 @@ class ChatWithHistory:
     
     def chat(self, user_input):
         response = self.chain.invoke({"input": user_input})
-        print(f"Response Internal: {response}")
         self.memory.chat_memory.add_user_message(user_input)
         self.memory.chat_memory.add_ai_message(str(response))
         return response
